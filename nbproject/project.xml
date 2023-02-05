@@ -5,6 +5,7 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>Wypozyczalnia</name>
             <source-roots>
+                <root id="src.biblioteki%20do%20exportu%20do%20excela.dir"/>
                 <root id="src.dir"/>
             </source-roots>
             <test-roots>

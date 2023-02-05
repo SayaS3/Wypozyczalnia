@@ -2,9 +2,11 @@
 package Wypozyczalnia;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -48,7 +50,7 @@ public DefaultTableModel model;
 
         jPanel1 = new javax.swing.JPanel();
         ID_klienta = new javax.swing.JTextField();
-        btnDodajCzyt = new javax.swing.JButton();
+        btnDodajKlienta = new javax.swing.JButton();
         btnCofnij = new javax.swing.JButton();
         Nazwisko_klienta = new javax.swing.JTextField();
         Nr_prawojazdy = new javax.swing.JTextField();
@@ -59,6 +61,7 @@ public DefaultTableModel model;
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         klientTabela = new javax.swing.JTable();
+        btnUsnKlienta = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,11 +82,11 @@ public DefaultTableModel model;
             }
         });
 
-        btnDodajCzyt.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        btnDodajCzyt.setText("Dodaj klienta");
-        btnDodajCzyt.addActionListener(new java.awt.event.ActionListener() {
+        btnDodajKlienta.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        btnDodajKlienta.setText("Dodaj klienta");
+        btnDodajKlienta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajCzytActionPerformed(evt);
+                btnDodajKlientaActionPerformed(evt);
             }
         });
 
@@ -144,39 +147,45 @@ public DefaultTableModel model;
         });
         jScrollPane1.setViewportView(klientTabela);
 
+        btnUsnKlienta.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        btnUsnKlienta.setText("Usuń klienta");
+        btnUsnKlienta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsnKlientaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(172, 172, 172)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nr_prawojazdy, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ID_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Imie_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nazwisko_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 250, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(382, 382, 382)
-                                .addComponent(btnCofnij))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(346, 346, 346)
-                                .addComponent(btnDodajCzyt)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnDodajKlienta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUsnKlienta))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Nr_prawojazdy, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ID_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Imie_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Nazwisko_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 214, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCofnij)
+                .addGap(359, 359, 359))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,9 +208,11 @@ public DefaultTableModel model;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nazwisko_klienta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(btnDodajCzyt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDodajKlienta, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsnKlienta, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCofnij)
                 .addGap(7, 7, 7))
         );
@@ -223,7 +234,7 @@ public DefaultTableModel model;
         // TODO add your handling code here:
     }//GEN-LAST:event_Nazwisko_klientaActionPerformed
 
-    private void btnDodajCzytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajCzytActionPerformed
+    private void btnDodajKlientaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajKlientaActionPerformed
         // TODO add your handling code here:
              String ID_klienta1 = ID_klienta.getText();
              String Nr_prawojazdy1 = Nr_prawojazdy.getText();
@@ -231,7 +242,7 @@ public DefaultTableModel model;
              String Nazwisko_klienta1= Nazwisko_klienta.getText();
        
                 
-                if(KlientDodaj.DodajCzyt(ID_klienta1,Nr_prawojazdy1,Imie_klienta1, Nazwisko_klienta1)!=0)
+                if(Klient.DodajKlienta(ID_klienta1,Nr_prawojazdy1,Imie_klienta1, Nazwisko_klienta1)!=0)
                 {
                     JOptionPane.showMessageDialog(DodajKlienta.this, "Dodano klienta!","Powodzenie!", JOptionPane.ERROR_MESSAGE);
                     ID_klienta.setText("");
@@ -240,9 +251,9 @@ public DefaultTableModel model;
                     Nazwisko_klienta.setText("");
                 }
                 else
-                       JOptionPane.showMessageDialog(DodajKlienta.this, "Błąd podczas dodawania klienta","Niepowodzenie!", JOptionPane.ERROR_MESSAGE);
+                       JOptionPane.showMessageDialog(DodajKlienta.this, "Błąd podczas dodawania klienta, ID_klienta musi być unikalne!","Niepowodzenie!", JOptionPane.ERROR_MESSAGE);
    
-    }//GEN-LAST:event_btnDodajCzytActionPerformed
+    }//GEN-LAST:event_btnDodajKlientaActionPerformed
 
     private void Nr_prawojazdyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nr_prawojazdyActionPerformed
         // TODO add your handling code here:
@@ -251,6 +262,42 @@ public DefaultTableModel model;
     private void Imie_klientaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Imie_klientaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Imie_klientaActionPerformed
+
+    private void btnUsnKlientaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsnKlientaActionPerformed
+        int result = JOptionPane.showConfirmDialog(this, "Czy napewno chcesz usunąć tego klienta?", "Wybierz opcje", JOptionPane.YES_NO_OPTION);
+        int column = 0;
+        int selectedRow = klientTabela.getSelectedRow();
+        String value = klientTabela.getModel().getValueAt(selectedRow, column).toString();
+        if (result == JOptionPane.OK_OPTION) {
+            if (selectedRow >= 0) {
+                if (value != null) {
+                    try {
+                      
+                        Connection con = null;
+                        Properties props = new Properties();
+                        props.put("user", "root");
+                        props.put("password", "kupa1234");
+                        props.put("useUnicode", "true");
+                        props.put("useServerPrepStmts", "false");
+                        props.put("characterEncoding", "UTF-8");
+
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wypozyczalnia3_1", props);
+                        String sql = "delete from klient where id_klienta=?";
+                        PreparedStatement pstmt = con.prepareStatement(sql);
+                        pstmt.setInt(1, Integer.parseInt(value));
+                        pstmt.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Klient został usunięty!");
+
+                        model.removeRow(klientTabela.getSelectedRow());
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUsnKlientaActionPerformed
 
     
     public static void main(String args[]) {
@@ -270,7 +317,8 @@ public DefaultTableModel model;
     private javax.swing.JTextField Nazwisko_klienta;
     private javax.swing.JTextField Nr_prawojazdy;
     private javax.swing.JButton btnCofnij;
-    private javax.swing.JButton btnDodajCzyt;
+    private javax.swing.JButton btnDodajKlienta;
+    private javax.swing.JButton btnUsnKlienta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

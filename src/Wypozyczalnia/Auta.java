@@ -487,7 +487,7 @@ public class Auta extends javax.swing.JFrame {
     }//GEN-LAST:event_AutoDodajPrzyciskActionPerformed
 
     private void AutoUsunPrzyciskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AutoUsunPrzyciskActionPerformed
-        int result = JOptionPane.showConfirmDialog(this, "Czy napewno chcesz usunąć to konto?", "Wybierz opcje", JOptionPane.YES_NO_OPTION);
+        int result = JOptionPane.showConfirmDialog(this, "Czy napewno chcesz usunąć to auto?", "Wybierz opcje", JOptionPane.YES_NO_OPTION);
         int column = 0;
         int selectedRow = tabllBaza.getSelectedRow();
         String value = tabllBaza.getModel().getValueAt(selectedRow, column).toString();
@@ -495,16 +495,17 @@ public class Auta extends javax.swing.JFrame {
             if (selectedRow >= 0) {
                 if (value != null) {
                     try {
+                      
                         Connection con = null;
                         Properties props = new Properties();
                         props.put("user", "root");
-                        props.put("password", "1234");
+                        props.put("password", "kupa1234");
                         props.put("useUnicode", "true");
                         props.put("useServerPrepStmts", "false");
                         props.put("characterEncoding", "UTF-8");
 
                         Class.forName("com.mysql.jdbc.Driver");
-                        con = DriverManager.getConnection("jdbc:mysql://localhost:3307/wypozyczalnia3_1", props);
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wypozyczalnia3_1", props);
                         String sql = "delete from samochody where id_auta=?";
                         PreparedStatement pstmt = con.prepareStatement(sql);
                         pstmt.setInt(1, Integer.parseInt(value));

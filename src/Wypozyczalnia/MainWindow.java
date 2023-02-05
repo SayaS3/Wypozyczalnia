@@ -33,10 +33,11 @@ public class MainWindow extends javax.swing.JFrame {
         btnZobaczAuta = new javax.swing.JButton();
         btnWypAuta = new javax.swing.JButton();
         btnWyjscie = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.darkGray);
 
+        btnZobaczKlient.setBackground(java.awt.Color.gray);
         btnZobaczKlient.setText("Zobacz wypożyczalnie");
         btnZobaczKlient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +45,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnWpyAuto.setBackground(java.awt.Color.gray);
         btnWpyAuto.setText("Wypożycz auto");
         btnWpyAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnOddajAuto.setBackground(java.awt.Color.gray);
         btnOddajAuto.setText("Oddaj auto");
         btnOddajAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +61,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnDodajKlient.setBackground(java.awt.Color.gray);
         btnDodajKlient.setText("Dodaj klienta");
         btnDodajKlient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +69,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnZobaczKlient1.setBackground(java.awt.Color.gray);
         btnZobaczKlient1.setText("Archiwum");
         btnZobaczKlient1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +77,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnZobaczAuta.setBackground(java.awt.Color.gray);
         btnZobaczAuta.setText("Auta");
         btnZobaczAuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +85,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnWypAuta.setBackground(java.awt.Color.gray);
         btnWypAuta.setText("Łączenie tabel");
         btnWypAuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +93,9 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        btnWyjscie.setBackground(java.awt.Color.gray);
         btnWyjscie.setText("Wyjście");
+        btnWyjscie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnWyjscie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWyjscieActionPerformed(evt);
@@ -102,14 +111,14 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnWyjscie, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnWypAuta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                        .addComponent(btnWypAuta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnZobaczAuta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnZobaczKlient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnZobaczKlient1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDodajKlient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnOddajAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnWpyAuto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,18 +138,15 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(btnWypAuta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnWyjscie, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Damian\\Downloads\\toppng.com-automobile-car-drive-ride-silhouette-styli-car-rental-logo-681x209.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1))
         );
@@ -149,10 +155,6 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,7 +247,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnZobaczAuta;
     private javax.swing.JButton btnZobaczKlient;
     private javax.swing.JButton btnZobaczKlient1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
